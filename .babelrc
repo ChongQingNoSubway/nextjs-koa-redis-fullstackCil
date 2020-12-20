@@ -1,0 +1,11 @@
+{
+    "presets": ["next/babel"], // next babel default config 
+    "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "antd"
+            }
+        ]
+    ]
+}
