@@ -1,35 +1,62 @@
 <<<<<<< HEAD
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a nextjs-koa-radis project that is learn different frameworks and  SSR
 
 ## Getting Started
 
 First, run the development server:
 
+npm install
+
+
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## configuration and construction process
+we will need to make sure that node was installed on your computer
 
-## Learn More
+The project main use frameworks : 
+    Front-end: react-nextjs
+    Back-end: node - koa
+    Database: redis
 
-To learn more about Next.js, take a look at the following resources:
+First we input
+    ```
+    npm install -g create-next-app 
+    ```
+    for Introducing next framework
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Second the nextjs is a server, and it can onley deal with SSR. So the node(koa) can be used to handle data interface and connection of database, keep session state.
+    ```
+    npm install koa 
+     ```
+and then create the file <span style="color:red;">server.js</span> in the project root directory for server configuration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Third using redis as database and connect node to radis
+    The radis(windows) installation : [https://github.com/microsoftarchive/redis/releases](https://github.com/microsoftarchive/redis/releases) version: 3.0.504
+    After installation, we can set the port and password we want in the window.conf file
+    open windows powershell in your radis installation directory 
+    ```
+    ./redis-server.exe ./redis.window.conf
+    ```
 
-## Deploy on Vercel
+    open a new windows powershell 
+    ```
+     ./redis-cli -p xxxx(setting port)
+     auth xxxxxxx(password)
+    ```
+    For test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    Use ioredis to connect node to radis
+    ```
+     npm install ioredis
+    ```
+    There are some test codes for node operation redis in the test directory
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 
+
 =======
-# nextjs-koa-redis-learningproject
-a project for learning Nextjs-koa-radis
->>>>>>> 2bcc4ac720d3201d99d8b427926b4c1c06306f8a
+
