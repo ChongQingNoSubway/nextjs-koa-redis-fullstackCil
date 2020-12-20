@@ -62,7 +62,54 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
      npm install ioredis
     ```
 
-    There are some test codes for node operation redis in the test directory  
+    There are some test codes for node operation redis in the test directory    
+
+- Finally Integrated antd-design and load css
+
+    First we load antd   
+    ```
+    npm install antd
+    ```  
+
+    Due to optimization issues, we use on-demand loading for antd components  
+    ```  
+    npm install babel-plugin-import
+    ```  
+
+    Create a babelrc file in the root directory to configure the plug-in and babel  
+    ```  
+    {
+    "presets": ["next/babel"], // next babel default config (must add)
+    "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "antd" //import {button} from 'antd' =  import button from 'antd/lib/button'
+                //"style": "css" bug for here 
+            }
+        ]
+    ]
+    }
+    ```  
+
+
+
+    Due to the problem of webpack, we add style to babelrc to cause an error. 
+    First we need @zeit/next-css to load css  
+    ```
+    npm install  @zeit/next-css
+    ```  
+    and then add file next.config.js to root directory, writting to configuration of next-css loader  
+
+    
+    after that ,we introduce globally in _app.js in the page directory:  
+    ```  
+    import 'antd/dist/antd.css'
+    ```  
+
+    
+
+
 
 ## 
 
