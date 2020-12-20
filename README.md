@@ -15,7 +15,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## configuration and construction process
+## Configuration and construction process
 #### we will need to make sure that node was installed on your computer
 
 #### The project main use frameworks :   
@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     npm install koa   
     ```
   
-and then create the file <span style="color:red;">server.js</span> in the project root directory for server configuration.
+    and then create the file <span style="color:red;">server.js</span> in the project root directory for server configuration.
 
 - Third using redis as database and connect node to radis  
     The radis(windows) installation : [microsoft-readis](https://github.com/microsoftarchive/redis/releases) version: 3.0.504  
