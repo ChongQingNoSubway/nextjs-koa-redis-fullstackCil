@@ -32,9 +32,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     for Introducing next framework  
 
 - Second the nextjs is a server, and it can onley deal with SSR. So the node(koa) can be used to handle data interface and connection of database, keep session state.   
-```
+    ```
     npm install koa   
-```
+    ```
   
 and then create the file <span style="color:red;">server.js</span> in the project root directory for server configuration.
 
@@ -61,7 +61,7 @@ and then create the file <span style="color:red;">server.js</span> in the projec
     ```
      npm install ioredis
     ```
-     
+
     There are some test codes for node operation redis in the test directory  
 
 ## 
