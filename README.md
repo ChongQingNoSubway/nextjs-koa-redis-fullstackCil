@@ -44,7 +44,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     open windows powershell in your radis installation directory     
 
     ```
-    ./redis-server.exe ./redis.window.conf
+    ./redis-server.exe ./redis.windows.conf
     ```
 
 
