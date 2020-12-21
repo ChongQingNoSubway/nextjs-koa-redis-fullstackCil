@@ -8,6 +8,8 @@ import styled from 'styled-components'
 //     </Link>
 // )
 
+
+// style-component css
 const Title = styled.h1`
     color: yellow;
     font-size: 40px

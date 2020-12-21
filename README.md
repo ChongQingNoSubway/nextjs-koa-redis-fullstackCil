@@ -64,7 +64,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
     There are some test codes for node operation redis in the test directory    
 
-- Finally Integrated antd-design and load css
+- Fourth Integrated antd-design and load css
 
     First we load antd   
     ```
@@ -107,9 +107,46 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     import 'antd/dist/antd.css'
     ```  
 
-    
+- Fifth add styled-component
+    the jsx is not only way we write the Css, so I also installed styled-component that can write Css  
 
+    ```  
+    npm install style-components babel-plugin-styled-components  
 
+    ```  
+    and then I need to add plugin into file .babelrc under root directory  
+
+    ```  
+    [  
+        "styled-components", { "ssr": true }  
+    ]  
+    ```  
+    Finally we need to confg the file _document.js under page diretory  
+
+    ```  
+    import { ServerStyleSheet } from 'styled-components'
+
+    static async getInitialProps(ctx) {
+        const sheet = new ServerStyleSheet()
+        const originalRenderPage = ctx.renderPage
+
+        try {
+            ctx.renderPage = () => originalRenderPage({
+                enhanceApp : App => props => sheet.collectStyles(<App {...props}/>),
+            })
+            const props = await Document.getInitialProps(ctx)
+
+            return {
+                ...props,
+                styles: <>{props.styles}{sheet.getStyleElement()}</>
+            }
+
+        }finally{
+            sheet.seal()
+        }
+    }  
+    ```  
+    it is a part of file _document.js.  
 
 ## 
 
