@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { withRouter } from 'next/router'
 import styled from 'styled-components'
 import dynamic from 'next/dynamic'
+// import getConfig from 'next/config'
 // import moment from 'moment'
 // export default () => (
 //     <Link href="/index">
@@ -15,6 +16,8 @@ import dynamic from 'next/dynamic'
 
 const Lazy = dynamic(import('../components/lazy'))
 
+const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
+
 // style-component css
 const Title = styled.h1`
     color: yellow;
@@ -23,6 +26,8 @@ const Title = styled.h1`
 
 const A = ({ router, name, time }) => {
 
+
+    // console.log(serverRuntimeConfig,publicRuntimeConfig)
     return(
         <>
         <Title>{time}</Title>
@@ -30,7 +35,7 @@ const A = ({ router, name, time }) => {
         <Link href="/index">
         <div className="link"><Comp className="link">a{router.query.id}</Comp>{name}</div>
         </Link>
-
+        <div>{process.env.customKey}</div>
         <Lazy/>
         
         <style jsx>{`
