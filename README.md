@@ -148,6 +148,74 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     ```  
     it is a part of file _document.js.  
 
+
+- Sixth Load modules asynchronously && nextjs configuration 
+    if we need to load modules asynchronously to avoid waste of resource, we can use  
+    ```  
+
+    import dynamic from 'next/dynamic'  
+
+    const Lazy = dynamic(import('../components/lazy'))  
+
+
+    ```  
+    In the file in the /page directory  
+
+
+
+    According to our needs, we can modification Nextjs configuration at file next.config.js  
+    the Following shows are all optional configuration  
+
+    ```  
+        //Output directory of compiled files  
+    distDir: 'dest',  
+    //whether to generate Etags for each routers(let the browser use the cache in the same request)  
+    generateEtags: true,  
+    //page content cache configuration  
+    onDemandEntries: {  
+        //how long the content is cached in memory  
+        maxInactiveAge: 25* 1000,  
+        //how many pages to cache  
+        pagesBufferLength: 2  
+    },  
+    //define the type of pages files available in the page directory   
+    pageExtensions:['jsx','js'],  
+    // configuration bulidId  
+    generateBuildId: async () => {  
+        if(process.env.YOUR_BUILD_ID){  
+            return process.env.YOUR_BUILD_ID  
+        }  
+  
+        return null  
+    },  
+    //manual modification webpack config  
+    webpack(config, options) {  
+        return config  
+    },  
+    // modification webpackdevMiddleware configuration  
+    webpackDevMiddleware: config => {  
+        return config  
+    },  
+    // config process.env  
+    env: {  
+        customKey: 'value',  
+    },  
+    //the following two need to be read  in 'next/config'  
+    // The configuration is only obtained when the server is rendering  
+    serverRuntimeConfig:{  
+        mySecret: 'secret',  
+        secondSecret: process.env.SECOND_SECRET,  
+    },  
+    // configuration available for both server-side rendering and client-server rendering  
+    publicRuntimeConfig: {  
+        staticFolder: '/static',  
+    },  
+  
+    ```    
+    Like publicRuntimeConfig, env and serverRuntimeConfig , we can add them into module.exports = withCss({ })  
+    , then get them in file in the /pages directory. (serverRuntimeConfig and publicRuntimeConfig need to import 'next/config')  
+ 
+
 ## 
 
 =======

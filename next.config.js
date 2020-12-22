@@ -1,20 +1,20 @@
 const withCss = require('@zeit/next-css')
 
 const configs = {
-    //编译文件的输出目录
+    //Output directory of compiled files
     distDir: 'dest',
-    //是否给每个路由生成Etag 让浏览器使用缓存 如果请求相同
+    //whether to generate Etags for each routers(let the browser use the cache in the same request)
     generateEtags: true,
-    //页面内容缓存配置
+    //page content cache configuration
     onDemandEntries: {
-        //内容在内存中缓存的时长
+        //how long the content is cached in memory
         maxInactiveAge: 25* 1000,
-        //缓存多少页面
+        //how many pages to cache
         pagesBufferLength: 2
     },
-    //在page目录下认为是页面的文件后缀
+    //define the type of pages files available in the page directory 
     pageExtensions:['jsx','js'],
-    // 配置bulidId
+    // configuration bulidId
     generateBuildId: async () => {
         if(process.env.YOUR_BUILD_ID){
             return process.env.YOUR_BUILD_ID
@@ -22,25 +22,25 @@ const configs = {
 
         return null
     },
-    //手动修改webpack config
+    //manual modification webpack config
     webpack(config, options) {
         return config
     },
-    // 修改webpackdevMiddleware 配置
+    // modification webpackdevMiddleware configuration
     webpackDevMiddleware: config => {
         return config
     },
-    // 配置process.env
+    // config process.env
     env: {
         customKey: 'value',
     },
-    //下面两个需要在'next/config'来读取
-    // 只有在服务端渲染时才会获取配置
+    //the following two need to be read  in 'next/config'
+    // The configuration is only obtained when the server is rendering
     serverRuntimeConfig:{
         mySecret: 'secret',
         secondSecret: process.env.SECOND_SECRET,
     },
-    // 服务端渲染和客户端渲染都可以获取的配置
+    // configuration available for both server-side rendering and client-server rendering
     publicRuntimeConfig: {
         staticFolder: '/static',
     },
@@ -60,7 +60,7 @@ module.exports = withCss({
     //     mySecret: 'secret',
     //     secondSecret: process.env.SECOND_SECRET,
     // },
-    // // 服务端渲染和客户端渲染都可以获取的配置
+    // // configuration available for both server-side rendering and client-side rendering 
     // publicRuntimeConfig: {
     //     staticFolder: '/static',
     // },
