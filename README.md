@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 This is a nextjs-koa-radis project that is learn different frameworks and  SSR
 
 ## Getting Started
