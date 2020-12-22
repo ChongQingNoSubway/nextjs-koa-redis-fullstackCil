@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-This is a nextjs-koa-radis project that is learn different frameworks and  SSR
+
+This is a nextjs-koa-radis project that is to learn different frameworks and  SSR
 
 ## Getting Started
 
