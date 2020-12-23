@@ -160,9 +160,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
     ```  
     In the file in the /page directory  
-
-
-
+    
+    
+      
     According to our needs, we can modification Nextjs configuration at file next.config.js  
     the Following shows are all optional configuration  
 
