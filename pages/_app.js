@@ -1,6 +1,8 @@
 import App, { Container} from 'next/app'
 import 'antd/dist/antd.css'
 import Layout from '../components/layout'
+import Mycontext from '../lib/my-context'
+import { Button } from 'antd'
 // why we need _app.js
 // 1. Use _app.js to fix layout
 // 2. keep some public state
@@ -8,7 +10,9 @@ import Layout from '../components/layout'
 // 4. customize process of err 
 
 class MyApp extends App {
-
+  state={
+    context: 'contenxt'
+  }
   static async getInitialProps({Component,ctx}) {
     // this method will be called at switch page
     console.log('app init')
@@ -27,7 +31,10 @@ class MyApp extends App {
     return (
       <Container>
         <Layout>
+          <Mycontext.Provider value={this.state.context}>
           <Component {...pageProps}/>
+          <button onClick={() => this.setState({context: `${this.state.context}111`})}>update context</button>
+          </Mycontext.Provider>
         </Layout>
       </Container>
     )

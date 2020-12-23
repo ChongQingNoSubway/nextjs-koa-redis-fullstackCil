@@ -16,7 +16,7 @@ import dynamic from 'next/dynamic'
 
 const Lazy = dynamic(import('../components/lazy'))
 
-const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
+// const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
 
 // style-component css
 const Title = styled.h1`
