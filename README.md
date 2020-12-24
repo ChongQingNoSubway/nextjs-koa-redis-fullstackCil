@@ -214,7 +214,35 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     ```    
     Like publicRuntimeConfig, env and serverRuntimeConfig , we can add them into module.exports = withCss({ })  
     , then get them in file in the /pages directory. (serverRuntimeConfig and publicRuntimeConfig need to import 'next/config')  
- 
+  
+
+- Seventh introduce redux    
+    ```   
+        npm install redux   
+     
+    ```    
+    and then we add the /page folder under root directory, Creating files in /page directory  for State management.  
+  
+    sometime we need to dispatch async action for update state, but the machanism of dispatch can not wait until get asynchronous data before execution. so we need to use redux-thunk    
+    
+    ```  
+    npm install redux-thunk   
+
+    ```   
+    and then add the config to parameter applyMiddleware of method CreateStore  
+  
+    ```  
+   
+    import applyMiddleware from 'redux'  
+      
+    const store = createStore(  
+    allReducers,{  
+        counter: initialState,  
+        user: userInitialState  
+    },  
+    applyMiddleware(ReduxThunk)  
+    )    
+    ```    
 
 ## 
 
