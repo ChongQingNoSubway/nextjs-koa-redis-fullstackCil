@@ -3,11 +3,14 @@ import 'antd/dist/antd.css'
 import Layout from '../components/layout'
 import Mycontext from '../lib/my-context'
 import { Button } from 'antd'
+import { Provider } from 'react-redux'
 // why we need _app.js
 // 1. Use _app.js to fix layout
 // 2. keep some public state
 // 3. give other pages some customized data
 // 4. customize process of err 
+import store from '../store/store'
+import testHoc from '../lib/testHoc'
 
 class MyApp extends App {
   state={
@@ -31,14 +34,16 @@ class MyApp extends App {
     return (
       <Container>
         <Layout>
+          <Provider store={store}>
           <Mycontext.Provider value={this.state.context}>
           <Component {...pageProps}/>
           <button onClick={() => this.setState({context: `${this.state.context}111`})}>update context</button>
           </Mycontext.Provider>
+          </Provider>
         </Layout>
       </Container>
     )
   }
 }
 
-export default MyApp
+export default testHoc(MyApp)

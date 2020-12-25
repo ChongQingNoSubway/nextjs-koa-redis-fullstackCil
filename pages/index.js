@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Router from 'next/router'
 
 import store from '../store/store'
-
+import {connect} from 'react-redux'
 
 const events = [
   'routechangeStart',
@@ -24,7 +24,7 @@ events.forEach(event => {
   Router.events.on(event, makeEvent(event))
 })
 
-export default () => {
+const index =  ({counter, username,rename,add}) => {
   
   // function gotoTestB(){
   //   Router.push({
@@ -44,9 +44,30 @@ export default () => {
       <Button onClick={gotoTestB}>test router</Button> */}
 
       <span>
-        hello world
+        Count: {counter}
       </span>
+      <a>Username: {username}</a>
+      <input value={username} onChange={(e)=> rename(e.target.value)}/>
+      <button onClick={() => add(counter)}>do add</button>
     </>
   )
 
 }
+
+export default connect(function mapStateToProps(state) {
+  return {
+    counter: state.counter.count,
+    username: state.user.name
+  }
+}, function mapDispatchToProps(dispatch){
+  return {
+    add: (num) => dispatch({
+      type: 'ADD',
+      num
+    }),
+    rename: (name) => dispatch({
+      type: 'Update_USERNAME',
+      name
+    })
+  }
+})(index)
