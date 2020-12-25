@@ -218,8 +218,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Seventh introduce redux    
     ```   
-        npm install redux   
-     
+    npm install redux   
     ```    
     and then we add the /page folder under root directory, Creating files in /page directory  for State management.  
   
@@ -227,7 +226,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     
     ```  
     npm install redux-thunk   
-
     ```   
     and then add the config to parameter applyMiddleware of method CreateStore  
   
