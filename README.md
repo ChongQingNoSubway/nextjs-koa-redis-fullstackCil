@@ -240,6 +240,26 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     },  
     applyMiddleware(ReduxThunk)  
     )    
+    ```   
+
+    we need to connect redux and component and install the redux-tool to moniter redux-State
+    ```   
+    npm install react-redux    
+    npm install redux-devtools-extension  
+  
+    Example For react-Redux Config:  
+    import {connect} from 'react-redux'  
+    export default connect(function mapStateToProps)(function mapDispatchToProps)(index)    
+       
+    redux-devtools-extension config(composeWithDevTools):  
+    const store = createStore(  
+    allReducers,{  
+        counter: initialState,  
+        user: userInitialState  
+    },  
+    composeWithDevTools(applyMiddleware(ReduxThunk))  
+    )  
+  
     ```    
 
 ## 
