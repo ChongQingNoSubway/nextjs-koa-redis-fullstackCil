@@ -51,7 +51,7 @@ const store = createStore(
 )
 
 //action creator
-function add(num) {
+export function add(num) {
     return {
         type: ADD,
         num,
@@ -85,4 +85,15 @@ store.dispatch({ type:Update_USERNAME , name: "ssss" })
 
 
 
-export default store
+export default function initializeStore(state) {
+    const store = createStore(
+        allReducers,
+        Object.assign({}, {
+                counter: initialState,
+                user: userInitialState
+        },state),
+        composeWithDevTools(applyMiddleware(ReduxThunk))
+    )
+
+    return store
+}

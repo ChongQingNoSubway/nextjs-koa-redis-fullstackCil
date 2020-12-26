@@ -9,16 +9,16 @@ import { Provider } from 'react-redux'
 // 2. keep some public state
 // 3. give other pages some customized data
 // 4. customize process of err 
-import store from '../store/store'
-import testHoc from '../lib/testHoc'
+import testHoc from '../lib/with-redux'
 
 class MyApp extends App {
   state={
     context: 'contenxt'
   }
-  static async getInitialProps({Component,ctx}) {
+  static async getInitialProps(ctx) {
     // this method will be called at switch page
     console.log('app init')
+    const { Component} = ctx
     let pageProps 
     if(Component.getInitialProps){
       pageProps = await Component.getInitialProps(ctx)
@@ -29,12 +29,12 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps,reduxStore} = this.props
 
     return (
       <Container>
         <Layout>
-          <Provider store={store}>
+          <Provider store={reduxStore}>
           <Mycontext.Provider value={this.state.context}>
           <Component {...pageProps}/>
           <button onClick={() => this.setState({context: `${this.state.context}111`})}>update context</button>
