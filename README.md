@@ -1,4 +1,4 @@
-
+1
 This is a nextjs-koa-radis project that is to learn different frameworks and  SSR1
 
 ## Getting Started
